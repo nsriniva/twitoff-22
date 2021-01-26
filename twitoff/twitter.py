@@ -55,10 +55,10 @@ def add_or_update_user(username):
             # Add db_tweet to Tweet DB
             DB.session.add(db_tweet)
 
-      except Exception as e:
-          print("Error processing {}: {}".format(username, e))
-          raise e
-      
-      else:
-          # commit everything to the database
-          DB.session.commit()
+    except Exception as e:
+        print("Error processing {}: {}".format(username, e))
+        raise e
+
+    else:
+        # commit everything to the database
+        DB.session.commit()

@@ -46,7 +46,7 @@ def add_or_update_user(username):
 
         for tweet in tweets:
             # for each tweet we want to create an embedding
-            vectorized_tweet = vectorize_tweet(tweet.full_text)
+            vectorized_tweet = vectorize_tweet(tweet.text)
             # create tweet that will be added to our DB
             db_tweet = Tweet(id=tweet.id, text=tweet.text,
                              vect=vectorized_tweet)

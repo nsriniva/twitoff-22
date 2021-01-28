@@ -3,7 +3,7 @@
 from os import getenv
 from flask import Flask, render_template, request
 from .models import DB, User
-from .twitter import add_or_update_user
+from .twitter import add_or_update_user, update_all_users
 
 from .predict import predict_user
 
@@ -64,8 +64,8 @@ def create_app():
     def update():
         # How can we update each user in our database when we click
         # update user ?
-        add_or_update_user("elonmusk")
-        return render_template('base.html', title="Home",
+        update_all_users()
+        return render_template('base.html', title="All Tweets Updated",
                                users=User.query.all())
 
     @app.route('/reset')

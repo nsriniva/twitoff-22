@@ -36,7 +36,8 @@ def add_or_update_user(username):
             count=200,
             exclude_replies=True,
             include_rts=False,
-            tweet_mode="Extended"
+            tweet_mode="Extended",
+            since_id=db_user.newest_tweet_id
         )  # A list of tweets from "username"
 
         # empty tweets list == false, full tweets list == true
@@ -62,3 +63,9 @@ def add_or_update_user(username):
     else:
         # commit everything to the database
         DB.session.commit()
+
+
+def update_all_users():
+    """Update all Tweets for all Users in the User table."""
+    for user in User.query.all():
+        add_or_update_user(user.name)
